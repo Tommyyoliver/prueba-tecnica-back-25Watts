@@ -6,7 +6,13 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:4200", "https://tu-frontend.netlify.app"], // cambia por el dominio de tu front
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+// 👇 Esto ayuda a responder preflight
+app.options("*", cors());
 
 function parseDateToLocal(expiration_date) {
   if (!expiration_date && expiration_date !== 0) return null;
