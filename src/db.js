@@ -6,7 +6,5 @@ export const pool = createPool({
     host: process.env.DB_HOST || 'localhost',
     port: process.env.DB_PORT || 3306,
     database: process.env.DB_NAME || 'coupon_system',
-    ssl: {
-      rejectUnauthorized: true
-    }
+    ssl: process.env.DB_SSL === "true" ? { rejectUnauthorized: true } : undefined
 })
