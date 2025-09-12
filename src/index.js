@@ -108,13 +108,12 @@ app.post('/create-coupon', async (req, res) => {
         }
 
         // 👇 Calcular estado automático
-        const id = crypto.randomUUID();
         const expired = checkExpired(expiration_date);
         const finalActive = expired ? false : active;
 
         const [result] = await pool.query(
-            "INSERT INTO coupon (id, description, value, expiration_date, expired, active) VALUES (?,?,?,?,?,?)",
-            [id, description, value, expiration_date, expired, finalActive]
+            "INSERT INTO coupon (description, value, expiration_date, expired, active) VALUES (?,?,?,?,?)",
+            [description, value, expiration_date, expired, finalActive]
         );
 
         res.json({
