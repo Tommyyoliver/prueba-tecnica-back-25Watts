@@ -1,7 +1,3 @@
-
----
-
-```markdown
 # 🛠️ Backend - Gestión de Cupones
 
 Este es el backend de la aplicación de **Gestión de Cupones**, desarrollado en **Node.js con Express** y conectado a una base de datos **MySQL**.  
